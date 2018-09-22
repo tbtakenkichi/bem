@@ -1,0 +1,23 @@
+           1  time, surf_ar, vol, cx, cy, cz
+   1    0.00000    1.02231    1.00000    0.00000    0.46280    0.00000
+           0
+         300  time, D, thmax, thmin
+   1    0.00000    0.00000   45.00000  135.00000
+           0
+
+ ndiv    =  2
+ cont_an =  0.6000
+ visc1   =    1.00000
+ visc2   =    0.50000
+ tinit   = 10.0000
+ shrt    =  1.0000
+
+
+ mint    =  13
+ NGL     =   6
+ DT      = 0.001000
+ RUNGE   = 2
+ Move    = 1
+ Norm    = 1
+ Isym_xy = 0
+
