@@ -107,7 +107,7 @@ c-----------------------------
 
       Iopt_sgf = 1   ! need only G 
 
-       call sgf_3d_sw 
+       call sgf_3d_w 
      +
      +   (Iopt_sgf
      +   ,y,z,x

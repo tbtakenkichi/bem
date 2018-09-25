@@ -3,7 +3,7 @@
 # ------------
 #
 OBJ1 = drop_3dw.o trgl6_hsph_octa.o crvm_3d.o crvm_3d_interp.o
-OBJ2 = sgf_3d_w.o sgf_3d_fs.o sgf_3d_sw.o
+OBJ2 = sgf_3d_w.o sgf_3d_fs.o
 OBJ3 = dfel_3d.o dfel_3d_interp.o 
 OBJ39= abc.o elm_geom.o printel.o inclination.o taylor.o xy_slice.o xz_slice.o interp_p.o
 OBJ4 = sdlp_3d.o sdlp_3d_interp.o sdlp_3d_integral.o
@@ -89,8 +89,6 @@ sgf_3d_w.o: sgf_3d_w.f
 	gfortran -c sgf_3d_w.f
 sgf_3d_fs.o: sgf_3d_fs.f
 	gfortran -c sgf_3d_fs.f
-sgf_3d_sw.o: sgf_3d_sw.f
-	gfortran -c sgf_3d_sw.f
 gauss_leg.o: gauss_leg.f 
 	gfortran -c gauss_leg.f 
 gauss_trgl.o: gauss_trgl.f 

@@ -144,9 +144,9 @@ c     write (6,*)
 c       if(abs(p(i,2)-cy).gt.0.000001) then
         cf = 2.0D0*crvm(i)*srtn(i)
  
-        Df(i,1) = cf*vna(i,1) - Dsrtn(i,1)
-        Df(i,2) = cf*vna(i,2) - Dsrtn(i,2)
-        Df(i,3) = cf*vna(i,3) - Dsrtn(i,3)
+        Df(i,1) = 1.0 ! cf*vna(i,1) - Dsrtn(i,1)
+        Df(i,2) = 1.0 ! cf*vna(i,2) - Dsrtn(i,2)
+        Df(i,3) = 1.0 ! cf*vna(i,3) - Dsrtn(i,3)
         a = sqrt(Df(i,1)**2+Df(i,2)**2+Df(i,3)**2)
 c$$$      else
 c$$$

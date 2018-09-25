@@ -118,7 +118,7 @@ c---
 c compute the Green's function
 c---
 
-      call sgf_3d_sw 
+      call sgf_3d_w 
      +
      +  (Iopt_sgf
      +  ,y,z,x

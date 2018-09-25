@@ -155,7 +155,7 @@ c---
       y = 0.0D0
       z = rbase * etd(j)
 
-      call sgf_3d_sw
+      call sgf_3d_w
      +
      +  (Iopt_sgf
      +  ,y,z,x
