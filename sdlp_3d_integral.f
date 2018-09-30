@@ -24,7 +24,6 @@ c integrate the dlp over the kth element
 c---------------------------------------
 
       Implicit Double Precision (a-h,o-z)
-
       Dimension   p(1026,3)
       Dimension  ne(1026,7)
       Dimension vna(1026,3)
@@ -83,7 +82,7 @@ c---
 c triangle quadrature
 c---
 
-      write (6,*) 
+
       Do i=1,mint
 
         xi  = xiq(i)
@@ -122,7 +121,7 @@ c---
      +   ,hs
      +       )
 
-        write (6,*) hs,ph1,ph2,ph3
+c        write (6,*) hs,ph1,ph2,ph3
 
 c---
 c compute the Green's function
@@ -240,7 +239,7 @@ c$$$     +     + cf*ph6*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
       
 
       End Do
-      write (6,*) i0,k
+c      write (6,*) i0,k
 
 c-----
 c done

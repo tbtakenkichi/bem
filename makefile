@@ -19,7 +19,7 @@ OBJ  =  $(OBJA) $(OBJB)
 # ----
 #
 drop_3dw: $(OBJ)
-	f77 -o drop_3dw $(OBJ)
+	gfortran -o drop_3dw $(OBJ)
 #
 # compile
 # -------
@@ -27,12 +27,12 @@ drop_3dw: $(OBJ)
 drop_3dw.o: drop_3dw.f
 	gfortran -c drop_3dw.f
 trgl6_hsph_octa.o: trgl6_hsph_octa.f 
-	f77 -c trgl6_hsph_octa.f 
+	gfortran -c trgl6_hsph_octa.f 
 
 sdlp_3d.o: sdlp_3d.f 
-	f77 -c sdlp_3d.f 
+	gfortran -c sdlp_3d.f 
 sdlp_3d_interp.o: sdlp_3d_interp.f 
-	f77 -c sdlp_3d_interp.f 
+	gfortran -c sdlp_3d_interp.f 
 sdlp_3d_integral.o: sdlp_3d_integral.f 
 	gfortran -c sdlp_3d_integral.f 
 gauss_disk.o: gauss_disk.f 

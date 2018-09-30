@@ -183,7 +183,6 @@ c---
 
       CF1 = 0.0D0    ! deflation coefficient
 
-      write (6,*) 'hello'
 c---
 c deflate one eigenvalue
 c---
@@ -206,8 +205,6 @@ c---
 c---
 c compute the double-layer potential
 c---
-
-      write (6,*) 'hello'
       
       call sdlp_3d 
      +

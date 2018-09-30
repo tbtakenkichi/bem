@@ -85,8 +85,6 @@ c---------------------
 c----------------
 c loop over nodes
 c----------------
-
-      write (6,*) 'hello'
       
       Do 1 node=1,nvelt
 
