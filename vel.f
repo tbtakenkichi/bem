@@ -48,7 +48,7 @@ c-----------------------------------
       Dimension    u(1026,3)
       Dimension uinf(1026,3)
       Dimension upvt(1026,3)
-      Dimension    a(100,100)
+      Dimension    a(3078,3078)
 
       Dimension nvel(1026),lxy(1026,2)
 

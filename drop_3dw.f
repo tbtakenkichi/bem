@@ -76,7 +76,7 @@ c-----------------------------------------------
       Dimension    ne(1026,7)
       Dimension   vna(1026,3)
       Dimension     u(1026,3)
-      Dimension     a(100,100)
+      Dimension     a(3078,3078)
       Dimension     c(1026),srtn(1026)
       Dimension Umove(1026),Vmove(1026),Wmove(1026)
 

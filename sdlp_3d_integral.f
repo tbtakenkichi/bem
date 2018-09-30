@@ -28,7 +28,7 @@ c---------------------------------------
       Dimension  ne(1026,7)
       Dimension vna(1026,3)
       Dimension   u(1026,3)
-      Dimension   a(100,100)
+      Dimension   a(3078,3078)
  
       Dimension     n(512,6),nbe (512,3)
       Dimension alpha(512),  beta(512), gamma(512)
@@ -176,62 +176,178 @@ c     uz = 0.0
      +             +(ux*Txzy + uy*Tyzy + uz*Tzzy)*vny
      +             +(ux*Txzz + uy*Tyzz + uz*Tzzz)*vnz)*cf
 
-c$$$      a(3*i0-2,3*i1-2) =  a(3*i0-2,3*i1-2)
-c$$$     +     + cf*ph1*(Txxx*vnx + Txxy*vny + Txxz*vnz)
-c$$$      
-c$$$      a(3*i0-2,3*i2-2) =  a(3*i0-2,3*i2-2)
-c$$$     +     + cf*ph2*(Txxx*vnx + Txxy*vny + Txxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i3-2) =  a(3*i0-2,3*i3-2)
-c$$$     +     + cf*ph3*(Txxx*vnx + Txxy*vny + Txxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i4-2) =  a(3*i0-2,3*i4-2)
-c$$$     +     + cf*ph4*(Txxx*vnx + Txxy*vny + Txxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i5-2) =  a(3*i0-2,3*i5-2)
-c$$$     +     + cf*ph5*(Txxx*vnx + Txxy*vny + Txxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i6-2) =  a(3*i0-2,3*i6-2)
-c$$$     +     + cf*ph6*(Txxx*vnx + Txxy*vny + Txxz*vnz)
-c$$$
-c$$$
-c$$$      a(3*i0-2,3*i1-1) =  a(3*i0-2,3*i1-1)
-c$$$     +     + cf*ph1*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i2-1) =  a(3*i0-2,3*i2-1)
-c$$$     +     + cf*ph2*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i3-1) =  a(3*i0-2,3*i3-1)
-c$$$     +     + cf*ph3*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i4-1) =  a(3*i0-2,3*i4-1)
-c$$$     +     + cf*ph4*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i5-1) =  a(3*i0-2,3*i5-1)
-c$$$     +     + cf*ph5*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i6-1) =  a(3*i0-2,3*i6-1)
-c$$$     +     + cf*ph6*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
-c$$$
-c$$$
-c$$$      a(3*i0-2,3*i1) =  a(3*i0-2,3*i1)
-c$$$     +     + cf*ph1*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i2) =  a(3*i0-2,3*i2)
-c$$$     +     + cf*ph2*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i3) =  a(3*i0-2,3*i3)
-c$$$     +     + cf*ph3*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i4) =  a(3*i0-2,3*i4)
-c$$$     +     + cf*ph4*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i5) =  a(3*i0-2,3*i5)
-c$$$     +     + cf*ph5*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
-c$$$
-c$$$      a(3*i0-2,3*i6) =  a(3*i0-2,3*i6)
-c$$$     +     + cf*ph6*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+      ! u(i,1) <- u(i1~i6,1)
+      a(3*i0-2,3*i1-2) =  a(3*i0-2,3*i1-2)
+     +     + cf*ph1*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+      
+      a(3*i0-2,3*i2-2) =  a(3*i0-2,3*i2-2)
+     +     + cf*ph2*(Txxx*vnx + Txxy*vny + Txxz*vnz)
 
+      a(3*i0-2,3*i3-2) =  a(3*i0-2,3*i3-2)
+     +     + cf*ph3*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+
+      a(3*i0-2,3*i4-2) =  a(3*i0-2,3*i4-2)
+     +     + cf*ph4*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+
+      a(3*i0-2,3*i5-2) =  a(3*i0-2,3*i5-2)
+     +     + cf*ph5*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+
+      a(3*i0-2,3*i6-2) =  a(3*i0-2,3*i6-2)
+     +     + cf*ph6*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+
+      ! u(i,1) <- u(i1~6,2)
+      a(3*i0-2,3*i1-1) =  a(3*i0-2,3*i1-1)
+     +     + cf*ph1*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+
+      a(3*i0-2,3*i2-1) =  a(3*i0-2,3*i2-1)
+     +     + cf*ph2*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+
+      a(3*i0-2,3*i3-1) =  a(3*i0-2,3*i3-1)
+     +     + cf*ph3*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+
+      a(3*i0-2,3*i4-1) =  a(3*i0-2,3*i4-1)
+     +     + cf*ph4*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+
+      a(3*i0-2,3*i5-1) =  a(3*i0-2,3*i5-1)
+     +     + cf*ph5*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+
+      a(3*i0-2,3*i6-1) =  a(3*i0-2,3*i6-1)
+     +     + cf*ph6*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+
+      ! u(i,1) <- u(i1~6,3)
+      a(3*i0-2,3*i1) =  a(3*i0-2,3*i1)
+     +     + cf*ph1*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+
+      a(3*i0-2,3*i2) =  a(3*i0-2,3*i2)
+     +     + cf*ph2*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+
+      a(3*i0-2,3*i3) =  a(3*i0-2,3*i3)
+     +     + cf*ph3*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+
+      a(3*i0-2,3*i4) =  a(3*i0-2,3*i4)
+     +     + cf*ph4*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+
+      a(3*i0-2,3*i5) =  a(3*i0-2,3*i5)
+     +     + cf*ph5*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+
+      a(3*i0-2,3*i6) =  a(3*i0-2,3*i6)
+     +     + cf*ph6*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+
+      
+      ! u(i,2) <- u(i1~i6,1)
+      a(3*i0-1,3*i1-2) =  a(3*i0-1,3*i1-2)
+     +     + cf*ph1*(Txyx*vnx + Txyy*vny + Txyz*vnz)
+      
+      a(3*i0-1,3*i2-2) =  a(3*i0-1,3*i2-2)
+     +     + cf*ph2*(Txyx*vnx + Txyy*vny + Txyz*vnz)
+
+      a(3*i0-1,3*i3-2) =  a(3*i0-1,3*i3-2)
+     +     + cf*ph3*(Txyx*vnx + Txyy*vny + Txyz*vnz)
+
+      a(3*i0-1,3*i4-2) =  a(3*i0-1,3*i4-2)
+     +     + cf*ph4*(Txyx*vnx + Txyy*vny + Txyz*vnz)
+
+      a(3*i0-1,3*i5-2) =  a(3*i0-1,3*i5-2)
+     +     + cf*ph5*(Txyx*vnx + Txyy*vny + Txyz*vnz)
+
+      a(3*i0-1,3*i6-2) =  a(3*i0-1,3*i6-2)
+     +     + cf*ph6*(Txyx*vnx + Txyy*vny + Txyz*vnz)
+
+      ! u(i,2) <- u(i1~6,2)
+      a(3*i0-1,3*i1-1) =  a(3*i0-1,3*i1-1)
+     +     + cf*ph1*(Tyyx*vnx + Tyyy*vny + Tyyz*vnz)
+
+      a(3*i0-1,3*i2-1) =  a(3*i0-1,3*i2-1)
+     +     + cf*ph2*(Tyyx*vnx + Tyyy*vny + Tyyz*vnz)
+
+      a(3*i0-1,3*i3-1) =  a(3*i0-1,3*i3-1)
+     +     + cf*ph3*(Tyyx*vnx + Tyyy*vny + Tyyz*vnz)
+
+      a(3*i0-1,3*i4-1) =  a(3*i0-1,3*i4-1)
+     +     + cf*ph4*(Tyyx*vnx + Tyyy*vny + Tyyz*vnz)
+
+      a(3*i0-1,3*i5-1) =  a(3*i0-1,3*i5-1)
+     +     + cf*ph5*(Tyyx*vnx + Tyyy*vny + Tyyz*vnz)
+
+      a(3*i0-1,3*i6-1) =  a(3*i0-1,3*i6-1)
+     +     + cf*ph6*(Tyyx*vnx + Tyyy*vny + Tyyz*vnz)
+
+      ! u(i,2) <- u(i1~6,3)
+      a(3*i0-1,3*i1) =  a(3*i0-1,3*i1)
+     +     + cf*ph1*(Tzyx*vnx + Tzyy*vny + Tzyz*vnz)
+
+      a(3*i0-1,3*i2) =  a(3*i0-1,3*i2)
+     +     + cf*ph2*(Tzyx*vnx + Tzyy*vny + Tzyz*vnz)
+
+      a(3*i0-1,3*i3) =  a(3*i0-1,3*i3)
+     +     + cf*ph3*(Tzyx*vnx + Tzyy*vny + Tzyz*vnz)
+
+      a(3*i0-1,3*i4) =  a(3*i0-1,3*i4)
+     +     + cf*ph4*(Tzyx*vnx + Tzyy*vny + Tzyz*vnz)
+
+      a(3*i0-1,3*i5) =  a(3*i0-1,3*i5)
+     +     + cf*ph5*(Tzyx*vnx + Tzyy*vny + Tzyz*vnz)
+
+      a(3*i0-1,3*i6) =  a(3*i0-1,3*i6)
+     +     + cf*ph6*(Tzyx*vnx + Tzyy*vny + Tzyz*vnz)
+
+      
+      ! u(i,3) <- u(i1~i6,1)
+      a(3*i0,3*i1-2) =  a(3*i0,3*i1-2)
+     +     + cf*ph1*(Txzx*vnx + Txzy*vny + Txzz*vnz)
+      
+      a(3*i0,3*i2-2) =  a(3*i0,3*i2-2)
+     +     + cf*ph2*(Txzx*vnx + Txzy*vny + Txzz*vnz)
+
+      a(3*i0,3*i3-2) =  a(3*i0,3*i3-2)
+     +     + cf*ph3*(Txzx*vnx + Txzy*vny + Txzz*vnz)
+
+      a(3*i0,3*i4-2) =  a(3*i0,3*i4-2)
+     +     + cf*ph4*(Txzx*vnx + Txzy*vny + Txzz*vnz)
+
+      a(3*i0,3*i5-2) =  a(3*i0,3*i5-2)
+     +     + cf*ph5*(Txzx*vnx + Txzy*vny + Txzz*vnz)
+
+      a(3*i0,3*i6-2) =  a(3*i0,3*i6-2)
+     +     + cf*ph6*(Txzx*vnx + Txzy*vny + Txzz*vnz)
+
+      ! u(i,3) <- u(i1~6,2)
+      a(3*i0,3*i1-1) =  a(3*i0,3*i1-1)
+     +     + cf*ph1*(Tyzx*vnx + Tyzy*vny + Tyzz*vnz)
+
+      a(3*i0,3*i2-1) =  a(3*i0,3*i2-1)
+     +     + cf*ph2*(Tyzx*vnx + Tyzy*vny + Tyzz*vnz)
+
+      a(3*i0,3*i3-1) =  a(3*i0,3*i3-1)
+     +     + cf*ph3*(Tyzx*vnx + Tyzy*vny + Tyzz*vnz)
+
+      a(3*i0,3*i4-1) =  a(3*i0,3*i4-1)
+     +     + cf*ph4*(Tyzx*vnx + Tyzy*vny + Tyzz*vnz)
+
+      a(3*i0,3*i5-1) =  a(3*i0,3*i5-1)
+     +     + cf*ph5*(Tyzx*vnx + Tyzy*vny + Tyzz*vnz)
+
+      a(3*i0,3*i6-1) =  a(3*i0,3*i6-1)
+     +     + cf*ph6*(Tyzx*vnx + Tyzy*vny + Tyzz*vnz)
+
+      ! u(i,3) <- u(i1~6,3)
+      a(3*i0,3*i1) =  a(3*i0,3*i1)
+     +     + cf*ph1*(Tzzx*vnx + Tzzy*vny + Tzzz*vnz)
+
+      a(3*i0,3*i2) =  a(3*i0,3*i2)
+     +     + cf*ph2*(Tzzx*vnx + Tzzy*vny + Tzzz*vnz)
+
+      a(3*i0,3*i3) =  a(3*i0,3*i3)
+     +     + cf*ph3*(Tzzx*vnx + Tzzy*vny + Tzzz*vnz)
+
+      a(3*i0,3*i4) =  a(3*i0,3*i4)
+     +     + cf*ph4*(Tzzx*vnx + Tzzy*vny + Tzzz*vnz)
+
+      a(3*i0,3*i5) =  a(3*i0,3*i5)
+     +     + cf*ph5*(Tzzx*vnx + Tzzy*vny + Tzzz*vnz)
+
+      a(3*i0,3*i6) =  a(3*i0,3*i6)
+     +     + cf*ph6*(Tzzx*vnx + Tzzy*vny + Tzzz*vnz)
       
       
 

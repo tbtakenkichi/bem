@@ -33,7 +33,7 @@ c-------------------------------------------------
       Dimension   ne(1026,7)
       Dimension  vna(1026,3)
       Dimension    u(1026,3)
-      Dimension    a(100,100)
+      Dimension    a(3078,3078)
 
       Dimension nvel(1026)
 
@@ -136,6 +136,10 @@ c       write (6,100) k,uxel,uyel,uzel
 
       End Do
 
+      do l=1,100
+         write (6,*) a(l,1),a(l,2),a(l,3)
+      end do
+      
 c---
 c Compute the dlp over the base
 c---
