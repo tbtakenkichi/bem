@@ -70,6 +70,12 @@ c--------
 
       rbases = rbase**2  ! circular drop base radius squared
 
+      do l=1,3078
+         do m=1,3078
+            a(l,m) = 0.0d0
+         end do
+      end do
+      
 c--------------
 c for debugging
 c--------------
@@ -136,8 +142,8 @@ c       write (6,100) k,uxel,uyel,uzel
 
       End Do
 
-      do l=1,100
-         write (6,*) a(l,1),a(l,2),a(l,3)
+      do l=1,500
+         write (6,*) i,l,a(l,1),a(l,2),a(l,3)
       end do
       
 c---
