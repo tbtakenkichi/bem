@@ -51,7 +51,14 @@ c  (d) surface metric
 c---------------------------------------------
 
       Implicit Double Precision (a-h,o-z)
- 
+
+
+c--------
+c common block
+c--------
+c     common/veloc3/a
+      common/ph/ph1,ph2,ph3,ph4,ph5,ph6
+      
 c--------
 c prepare
 c--------
@@ -101,6 +108,7 @@ c--------------------------------
       uz = uz1*ph1 + uz2*ph2 + uz3*ph3
      +   + uz4*ph4 + uz5*ph5 + uz6*ph6
 
+   
 c----------------------------------------------
 c compute xi derivatives of the basis functions
 c----------------------------------------------

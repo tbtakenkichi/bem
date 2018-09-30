@@ -48,6 +48,7 @@ c-----------------------------------
       Dimension    u(1026,3)
       Dimension uinf(1026,3)
       Dimension upvt(1026,3)
+      Dimension    a(100,100)
 
       Dimension nvel(1026),lxy(1026,2)
 
@@ -76,6 +77,7 @@ c--------------
       common/veloc0/u
       common/veloc1/nvelt,nvel
       common/veloc2/nvelr,lxy
+      common/veloc3/a
 
       common/pii/pi,piq,pih,pi2,pi4,pi6,pi8
       common/contactangle/cont_angle_e
@@ -168,7 +170,7 @@ c------------------------------------------
        upvt(i,3) = vsf*( uinf(i,3) + slp(i,3)/vs1 )
 
       End Do
-
+      
 c---
 c begin the Neumann iterations
 c---
@@ -181,6 +183,7 @@ c---
 
       CF1 = 0.0D0    ! deflation coefficient
 
+      write (6,*) 'hello'
 c---
 c deflate one eigenvalue
 c---
@@ -204,6 +207,8 @@ c---
 c compute the double-layer potential
 c---
 
+      write (6,*) 'hello'
+      
       call sdlp_3d 
      +
      + (npts

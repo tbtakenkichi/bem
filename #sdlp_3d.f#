@@ -33,7 +33,7 @@ c-------------------------------------------------
       Dimension   ne(1026,7)
       Dimension  vna(1026,3)
       Dimension    u(1026,3)
-      Dimension    a(100,100)
+      Dimension    a(1026,3)
 
       Dimension nvel(1026)
 
@@ -86,8 +86,6 @@ c----------------
 c loop over nodes
 c----------------
 
-      write (6,*) 'hello'
-      
       Do 1 node=1,nvelt
 
       i = nvel(node)
@@ -100,7 +98,7 @@ c----------------
       v0 = u(i,2)
       w0 = u(i,3)
 
-      i0 = i
+      i0 = i ! calculate point
 
 c----------------------------------------
 c     write (6,*) " Enter x0,y0,z0"      ! to debug
@@ -128,7 +126,7 @@ c---
      +     ,mint
      +     ,u
      +     ,uxel,uyel,uzel
-     +     )
+     +        )
 
         us = us + uxel
         vs = vs + uyel
@@ -221,9 +219,9 @@ c---
       vs = vs - u0*sumxy - v0*sumyy  - w0*sumzy 
       ws = ws - u0*sumxz - v0*sumyz  - w0*sumzz
 
-c$$$      a(i,1) = a(i,1) - sumxx - sumyx - sumzx
-c$$$      a(i,2) = a(i,2) - sumxy - sumyy - sumzy
-c$$$      a(i,3) = a(i,3) - sumxz - sumyz - sumzz
+      a(i,1) = a(i,1) - sumxx - sumyx - sumzx
+      a(i,2) = a(i,2) - sumxy - sumyy - sumzy
+      a(i,3) = a(i,3) - sumxz - sumyz - sumzz
 
 c     write (6,100)
 c     write (6,100) i,sumxx,sumxy,sumxz
@@ -241,7 +239,7 @@ c----------------  !   End of integration over the base
       dlp(i,2) = vs-v0
       dlp(i,3) = ws-w0
 
-c      write (6,100) i,us,vs,ws
+      write (6,100) i,us,vs,ws
 c      write (6,100) i,a(i,1),a(i,2),a(i,3)
 
   1   Continue

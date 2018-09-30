@@ -76,6 +76,7 @@ c-----------------------------------------------
       Dimension    ne(1026,7)
       Dimension   vna(1026,3)
       Dimension     u(1026,3)
+      Dimension     a(100,100)
       Dimension     c(1026),srtn(1026)
       Dimension Umove(1026),Vmove(1026),Wmove(1026)
 
@@ -123,6 +124,7 @@ c--------------
       common/veloc0/u
       common/veloc1/nvelt,nvel
       common/veloc2/nvelr,lxy
+      common/veloc3/a
 
       common/tension/srtn
       common/contactangle/cont_angle_e

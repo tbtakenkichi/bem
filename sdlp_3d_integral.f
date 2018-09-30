@@ -2,6 +2,7 @@
      +
      +  (x0,y0,z0
      +  ,u0,v0,w0
+     +  ,i0
      +  ,k
      +  ,mint
      +  ,u
@@ -28,7 +29,8 @@ c---------------------------------------
       Dimension  ne(1026,7)
       Dimension vna(1026,3)
       Dimension   u(1026,3)
-
+      Dimension   a(100,100)
+ 
       Dimension     n(512,6),nbe (512,3)
       Dimension alpha(512),  beta(512), gamma(512)
 
@@ -42,11 +44,15 @@ c--------------
       common/elmnts/n,nbe
       common/albega/alpha,beta,gamma
 
+      common/veloc3/a
+      
       common/geo2/vna
 
       common/var/shrt,wall
 
       common/trq/xiq,etq,wq
+
+      common/ph/ph1,ph2,ph3,ph4,ph5,ph6
 
 c------
 c flags
@@ -77,11 +83,13 @@ c---
 c triangle quadrature
 c---
 
+      write (6,*) 
       Do i=1,mint
 
         xi  = xiq(i)
         eta = etq(i)
 
+        
         call sdlp_3d_interp 
      +
      +   (p(i1,1),p(i1,2),p(i1,3)
@@ -112,7 +120,9 @@ c---
      +   ,vnx,vny,vnz
      +   ,ux,uy,uz
      +   ,hs
-     +   )
+     +       )
+
+        write (6,*) hs,ph1,ph2,ph3
 
 c---
 c compute the Green's function
@@ -145,7 +155,7 @@ c---
       Txxz = Tzxx
       Tzxy = Tyxz
 
-      ux = ux-u0
+      ux = ux-u0 
       uy = uy-v0
       uz = uz-w0
 
@@ -167,7 +177,70 @@ c     uz = 0.0
      +             +(ux*Txzy + uy*Tyzy + uz*Tzzy)*vny
      +             +(ux*Txzz + uy*Tyzz + uz*Tzzz)*vnz)*cf
 
+c$$$      a(3*i0-2,3*i1-2) =  a(3*i0-2,3*i1-2)
+c$$$     +     + cf*ph1*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+c$$$      
+c$$$      a(3*i0-2,3*i2-2) =  a(3*i0-2,3*i2-2)
+c$$$     +     + cf*ph2*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i3-2) =  a(3*i0-2,3*i3-2)
+c$$$     +     + cf*ph3*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i4-2) =  a(3*i0-2,3*i4-2)
+c$$$     +     + cf*ph4*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i5-2) =  a(3*i0-2,3*i5-2)
+c$$$     +     + cf*ph5*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i6-2) =  a(3*i0-2,3*i6-2)
+c$$$     +     + cf*ph6*(Txxx*vnx + Txxy*vny + Txxz*vnz)
+c$$$
+c$$$
+c$$$      a(3*i0-2,3*i1-1) =  a(3*i0-2,3*i1-1)
+c$$$     +     + cf*ph1*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i2-1) =  a(3*i0-2,3*i2-1)
+c$$$     +     + cf*ph2*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i3-1) =  a(3*i0-2,3*i3-1)
+c$$$     +     + cf*ph3*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i4-1) =  a(3*i0-2,3*i4-1)
+c$$$     +     + cf*ph4*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i5-1) =  a(3*i0-2,3*i5-1)
+c$$$     +     + cf*ph5*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i6-1) =  a(3*i0-2,3*i6-1)
+c$$$     +     + cf*ph6*(Tyxx*vnx + Tyxy*vny + Tyxz*vnz)
+c$$$
+c$$$
+c$$$      a(3*i0-2,3*i1) =  a(3*i0-2,3*i1)
+c$$$     +     + cf*ph1*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i2) =  a(3*i0-2,3*i2)
+c$$$     +     + cf*ph2*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i3) =  a(3*i0-2,3*i3)
+c$$$     +     + cf*ph3*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i4) =  a(3*i0-2,3*i4)
+c$$$     +     + cf*ph4*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i5) =  a(3*i0-2,3*i5)
+c$$$     +     + cf*ph5*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+c$$$
+c$$$      a(3*i0-2,3*i6) =  a(3*i0-2,3*i6)
+c$$$     +     + cf*ph6*(Tzxx*vnx + Tzxy*vny + Tzxz*vnz)
+
+      
+      
+
+
+      
+
       End Do
+      write (6,*) i0,k
 
 c-----
 c done
