@@ -142,9 +142,9 @@ c       write (6,100) k,uxel,uyel,uzel
 
       End Do
 
-      do l=1,500
-         write (6,*) i,l,a(l,1),a(l,2),a(l,3)
-      end do
+c$$$      do l=1,500
+c$$$         write (6,*) i,l,a(l,1),a(l,2),a(l,3)
+c$$$      end do
       
 c---
 c Compute the dlp over the base
@@ -229,9 +229,6 @@ c---
       vs = vs - u0*sumxy - v0*sumyy  - w0*sumzy 
       ws = ws - u0*sumxz - v0*sumyz  - w0*sumzz
 
-c$$$      a(i,1) = a(i,1) - sumxx - sumyx - sumzx
-c$$$      a(i,2) = a(i,2) - sumxy - sumyy - sumzy
-c$$$      a(i,3) = a(i,3) - sumxz - sumyz - sumzz
 
 c     write (6,100)
 c     write (6,100) i,sumxx,sumxy,sumxz
