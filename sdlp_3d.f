@@ -229,6 +229,20 @@ c---
       vs = vs - u0*sumxy - v0*sumyy  - w0*sumzy 
       ws = ws - u0*sumxz - v0*sumyz  - w0*sumzz
 
+      ! u(i,1) <- base
+      a(3*i0-2,3*i0-2) = a(3*i0-2,3*i0-2) - sumxx
+      a(3*i0-2,3*i0-1) = a(3*i0-2,3*i0-1) - sumyx
+      a(3*i0-2,3*i0  ) = a(3*i0-2,3*i0)   - sumzx
+
+      ! u(i,2) <- base
+      a(3*i0-1,3*i0-2) = a(3*i0-1,3*i0-2) - sumxy
+      a(3*i0-1,3*i0-1) = a(3*i0-1,3*i0-1) - sumyy
+      a(3*i0-1,3*i0)   = a(3*i0-1,3*i0)   - sumzy
+
+      ! u(i,3) <- base
+      a(3*i0,3*i0-2)   = a(3*i0,3*i0-2)   - sumxz
+      a(3*i0,3*i0-1)   = a(3*i0,3*i0-1)   - sumyz
+      a(3*i0,3*i0)     = a(3*i0,3*i0)     - sumzz
 
 c     write (6,100)
 c     write (6,100) i,sumxx,sumxy,sumxz
@@ -242,10 +256,22 @@ c----------------  !   End of integration over the base
       vs = vs/pi4
       ws = ws/pi4
 
+      do l = 1,3078
+         do m = 1,3078
+            a(l,m) = a(l,m)/pi4
+         end do
+      end do
+      
+
       dlp(i,1) = us-u0
       dlp(i,2) = vs-v0
       dlp(i,3) = ws-w0
 
+      do i = 1,3078
+         a(i,i) = a(i,i) -1.0d0
+      end do
+
+      
 c      write (6,100) i,us,vs,ws
 c      write (6,100) i,a(i,1),a(i,2),a(i,3)
 
