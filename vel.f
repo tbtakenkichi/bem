@@ -214,6 +214,8 @@ c---
 c---
 c compute the double-layer potential
 c---
+
+      write (6,*) 'entering dlp'
       
       call sdlp_3d 
      +
@@ -230,9 +232,8 @@ c---
          end do
       end do
 
-      do i = 1,30
-         write (6,*) a(i,1),a(i,2),a(i,3),a(i,4),a(i,5),a(i,6)
-      end do
+      write (6,*) 'exited dlp'
+
       
 
 c---
@@ -288,6 +289,16 @@ c---
       m = 3078
 
       call dgesv(m,1,a,m,ipiv,b,m,info)
+
+      if(info.eq.0) then
+         write (6,*) 'successfully solved'
+      end if
+
+      if(info.ne.0) then
+         write (6,*) 'failed',info
+      end if
+      
+      
       
       
      

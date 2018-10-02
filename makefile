@@ -19,7 +19,7 @@ OBJ  =  $(OBJA) $(OBJB)
 # ----
 #
 drop_3dw: $(OBJ)
-	gfortran -o drop_3dw -llapack -lblas $(OBJ)
+	gfortran -o drop_3dw $(OBJ) -llapack -lblas
 #
 # compile
 # -------
@@ -30,53 +30,53 @@ trgl6_hsph_octa.o: trgl6_hsph_octa.f
 	gfortran -c trgl6_hsph_octa.f 
 
 sdlp_3d.o: sdlp_3d.f 
-	gfortran -c sdlp_3d.f 
+	gfortran -c sdlp_3d.f   
 sdlp_3d_interp.o: sdlp_3d_interp.f 
-	gfortran -c sdlp_3d_interp.f 
+	gfortran -c sdlp_3d_interp.f   
 sdlp_3d_integral.o: sdlp_3d_integral.f 
-	gfortran -c sdlp_3d_integral.f 
+	gfortran -c sdlp_3d_integral.f  
 gauss_disk.o: gauss_disk.f 
 	gfortran -c gauss_disk.f 
 elm_geom.o: elm_geom.f
-	gfortran -c elm_geom.f 
+	gfortran -c elm_geom.f   
 abc.o: abc.f
-	gfortran -c abc.f
+	gfortran -c abc.f  
 printel.o: printel.f
-	gfortran -c printel.f
+	gfortran -c printel.f  
 interp_p.o: interp_p.f
-	gfortran -c interp_p.f
+	gfortran -c interp_p.f 
 taylor.o: taylor.f
-	gfortran -c taylor.f
+	gfortran -c taylor.f 
 inclination.o: inclination.f
-	gfortran -c inclination.f
+	gfortran -c inclination.f 
 #
 #
 # all below borrowed from drop_3d
 # -------------------------------
 #
 #
-vel.o: vel.f 
-	gfortran -c vel.f -llapack -lblas
+ vel.o: vel.f 
+	gfortran -c  vel.f 
 deflation.o: deflation.f
-	gfortran -c deflation.f -llapack -lblas
+	gfortran -c deflation.f 
 dfel_3d.o: dfel_3d.f 
-	gfortran -c dfel_3d.f 
+	gfortran -c dfel_3d.f   
 dfel_3d_interp.o: dfel_3d_interp.f 
-	gfortran -c dfel_3d_interp.f 
+	gfortran -c dfel_3d_interp.f  
 sslp_3d.o: sslp_3d.f
-	gfortran -c sslp_3d.f 
+	gfortran -c sslp_3d.f  
 sslp_3d_interp.o: sslp_3d_interp.f
-	gfortran -c sslp_3d_interp.f 
+	gfortran -c sslp_3d_interp.f  
 sslp_3d_integral.o: sslp_3d_integral.f
 	gfortran -c sslp_3d_integral.f 
 sslp_3d_integral_sing.o: sslp_3d_integral_sing.f
-	gfortran -c sslp_3d_integral_sing.f 
+	gfortran -c sslp_3d_integral_sing.f  
 crvm_3d.o: crvm_3d.f
 	gfortran -c crvm_3d.f
 crvm_3d_interp.o: crvm_3d_interp.f
-	gfortran -c crvm_3d_interp.f
+	gfortran -c crvm_3d_interp.f 
 xy_slice.o: xy_slice.f
-	gfortran -c xy_slice.f
+	gfortran -c xy_slice.f 
 xz_slice.o: xz_slice.f
 	gfortran -c xz_slice.f
 sgrad_3d.o: sgrad_3d.f
@@ -86,13 +86,13 @@ sgrad_3d_interp.o: sgrad_3d_interp.f
 cramer_33.o: cramer_33.f
 	gfortran -c cramer_33.f 
 sgf_3d_w.o: sgf_3d_w.f 
-	gfortran -c sgf_3d_w.f
+	gfortran -c sgf_3d_w.f 
 sgf_3d_fs.o: sgf_3d_fs.f
-	gfortran -c sgf_3d_fs.f
+	gfortran -c sgf_3d_fs.f 
 gauss_leg.o: gauss_leg.f 
 	gfortran -c gauss_leg.f 
 gauss_trgl.o: gauss_trgl.f 
-	gfortran -c gauss_trgl.f 
+	gfortran -c gauss_trgl.f
 #
 # all
 # ---
