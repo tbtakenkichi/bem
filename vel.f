@@ -282,12 +282,13 @@ c$$$      if(Idfl.eq.1) write (6,108) iter,Diff,CF1
 c---
 c Solve linear equations AX=B
 c---
-      do i = 1,3078
-         a(i,i) = 1.0d0 - a(i,i)
-      end do
+c$$$      do i = 1,3078
+c$$$         a(i,i) = 1.0d0 - a(i,i)
+c$$$         write (6,*) i,b(i),a(i,1),a(i,2),a(i,3),a(i,4)
+c$$$      end do
 
       m = 3078
-
+      
       call dgesv(m,1,a,m,ipiv,b,m,info)
 
       if(info.eq.0) then
