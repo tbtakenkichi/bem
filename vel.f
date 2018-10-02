@@ -49,6 +49,7 @@ c-----------------------------------
       Dimension uinf(1026,3)
       Dimension upvt(1026,3)
       Dimension    a(3078,3078)
+      Dimension    b(3078)
 
       Dimension nvel(1026),lxy(1026,2)
 
@@ -77,7 +78,7 @@ c--------------
       common/veloc0/u
       common/veloc1/nvelt,nvel
       common/veloc2/nvelr,lxy
-      common/veloc3/a
+      common/veloc3/a,b
 
       common/pii/pi,piq,pih,pi2,pi4,pi6,pi8
       common/contactangle/cont_angle_e
@@ -108,9 +109,16 @@ c---------------------------------------------
      +  ,mint
      +  ,NGL
      +  ,slp
-     +  )
-
+     +     )
+      
       write (6,*) "vel: exited slp"
+
+      do i = 1,1026
+         b(3*i-2) = slp(i,1)
+         b(3*i-1) = slp(i,2)
+         b(3*i)   = slp(i,3)
+      end do
+      
 
 c--------------------
 c reflect a symmetric interface
@@ -213,7 +221,18 @@ c---
      + ,mint
      + ,u
      + ,dlp
-     + )
+     +     )
+
+      do l = 1,3078
+         do m = 1,3078
+            a(l,m) = a(l,m)/pi4
+         end do
+      end do
+
+      do i = 1,30
+         write (6,*) a(i,1),a(i,2),a(i,3),a(i,4),a(i,5),a(i,6)
+      end do
+      
 
 c---
 c reflect a symmetric interface

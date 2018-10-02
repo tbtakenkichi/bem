@@ -255,21 +255,13 @@ c----------------  !   End of integration over the base
       us = us/pi4
       vs = vs/pi4
       ws = ws/pi4
-
-      do l = 1,3078
-         do m = 1,3078
-            a(l,m) = a(l,m)/pi4
-         end do
-      end do
       
 
       dlp(i,1) = us-u0
       dlp(i,2) = vs-v0
       dlp(i,3) = ws-w0
 
-      do i = 1,3078
-         a(i,i) = a(i,i) -1.0d0
-      end do
+      a(i,i) = a(i,i) - 1.0d0
 
       
 c      write (6,100) i,us,vs,ws
