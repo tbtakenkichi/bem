@@ -14,7 +14,7 @@ OBJ7 = sgrad_3d.o sgrad_3d_interp.o
 OBJA =  $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5) $(OBJ6) $(OBJ7) $(OBJ41)
 OBJB =  $(OBJ39)
 OBJ  =  $(OBJA) $(OBJB)
-# 
+# 0.
 # link
 # ----
 #
@@ -25,10 +25,9 @@ drop_3dw: $(OBJ)
 # -------
 #
 drop_3dw.o: drop_3dw.f
-	gfortran -c drop_3dw.f
+	gfortran -c drop_3dw.f -llapack -lblas
 trgl6_hsph_octa.o: trgl6_hsph_octa.f 
 	gfortran -c trgl6_hsph_octa.f 
-
 sdlp_3d.o: sdlp_3d.f 
 	gfortran -c sdlp_3d.f 
 sdlp_3d_interp.o: sdlp_3d_interp.f 
@@ -56,9 +55,9 @@ inclination.o: inclination.f
 #
 #
 vel.o: vel.f 
-	gfortran -c vel.f -llapack -lblas
+	gfortran -c -llapack -lblas vel.f 
 deflation.o: deflation.f
-	gfortran -c deflation.f -llapack -lblas
+	gfortran -c deflation.f 
 dfel_3d.o: dfel_3d.f 
 	gfortran -c dfel_3d.f 
 dfel_3d_interp.o: dfel_3d_interp.f 

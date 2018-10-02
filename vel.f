@@ -50,6 +50,7 @@ c-----------------------------------
       Dimension upvt(1026,3)
       Dimension    a(3078,3078)
       Dimension    b(3078)
+      Dimension ipiv(1026)
 
       Dimension nvel(1026),lxy(1026,2)
 
@@ -254,29 +255,42 @@ c---
 c Gauss--Siedel updating
 c---
 
-      Diff = 0.0D0
+c$$$      Diff = 0.0D0
+c$$$
+c$$$      Do i=1,npts
+c$$$
+c$$$       unew = upvt(i,1) + vsk*dlp(i,1) - CF1*vna(i,1)
+c$$$       vnew = upvt(i,2) + vsk*dlp(i,2) - CF1*vna(i,2)
+c$$$       wnew = upvt(i,3) + vsk*dlp(i,3) - CF1*vna(i,3)
+c$$$
+c$$$       Dev  = Dsqrt((unew-u(i,1))**2     ! maximum correction
+c$$$     +            + (vnew-u(i,2))**2
+c$$$     +            + (wnew-u(i,3))**2)
+c$$$
+c$$$       if(Dev.gt.Diff) Diff = Dev
+c$$$
+c$$$       u(i,1) = unew
+c$$$       u(i,2) = vnew
+c$$$       u(i,3) = wnew
+c$$$
+c$$$      End Do
+c$$$
+c$$$      if(Idfl.eq.0) write (6,107) iter,Diff
+c$$$      if(Idfl.eq.1) write (6,108) iter,Diff,CF1
 
-      Do i=1,npts
+c---
+c Solve linear equations AX=B
+c---
+      do i = 1,3078
+         a(i,i) = 1.0d0 - a(i,i)
+      end do
 
-       unew = upvt(i,1) + vsk*dlp(i,1) - CF1*vna(i,1)
-       vnew = upvt(i,2) + vsk*dlp(i,2) - CF1*vna(i,2)
-       wnew = upvt(i,3) + vsk*dlp(i,3) - CF1*vna(i,3)
+      m = 3078
 
-       Dev  = Dsqrt((unew-u(i,1))**2     ! maximum correction
-     +            + (vnew-u(i,2))**2
-     +            + (wnew-u(i,3))**2)
-
-       if(Dev.gt.Diff) Diff = Dev
-
-       u(i,1) = unew
-       u(i,2) = vnew
-       u(i,3) = wnew
-
-      End Do
-
-      if(Idfl.eq.0) write (6,107) iter,Diff
-      if(Idfl.eq.1) write (6,108) iter,Diff,CF1
-
+      call dgesv(m,1,a,m,ipiv,b,m,info)
+      
+      
+     
 c---------------------
 c stop the iterations ?
 c---------------------
