@@ -28,7 +28,7 @@ c---------------------------------------
       Dimension  ne(1026,7)
       Dimension vna(1026,3)
       Dimension   u(1026,3)
-      Dimension   a(3078,3078)
+      Dimension   a(435,435)
  
       Dimension     n(512,6),nbe (512,3)
       Dimension alpha(512),  beta(512), gamma(512)

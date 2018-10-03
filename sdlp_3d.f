@@ -33,7 +33,7 @@ c-------------------------------------------------
       Dimension   ne(1026,7)
       Dimension  vna(1026,3)
       Dimension    u(1026,3)
-      Dimension    a(3078,3078)
+      Dimension    a(435,435)
 
       Dimension nvel(1026)
 
@@ -70,8 +70,8 @@ c--------
 
       rbases = rbase**2  ! circular drop base radius squared
 
-      do l=1,3078
-         do m=1,3078
+      do l=1,435
+         do m=1,435
             a(l,m) = 0.0d0
          end do
       end do

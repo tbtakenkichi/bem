@@ -76,7 +76,7 @@ c-----------------------------------------------
       Dimension    ne(1026,7)
       Dimension   vna(1026,3)
       Dimension     u(1026,3)
-      Dimension     a(3078,3078)
+      Dimension     a(435,435)
       Dimension     c(1026),srtn(1026)
       Dimension Umove(1026),Vmove(1026),Wmove(1026)
 
@@ -1033,6 +1033,7 @@ c----------------------
       end if
 c----------------------
 
+
       Do i=1,npts
 
         if(Move.eq.0) then      ! points move with total velocity
@@ -1086,6 +1087,7 @@ c----------------------
 c RK2 step
 c----------------------
 
+      write (6,*)
       Do i=1,npts
         Usv(i) = Umove(i)
         Vsv(i) = Vmove(i)
