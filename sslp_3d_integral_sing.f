@@ -131,7 +131,7 @@ c--------------
        dfy = fy1*zt + fy2*xi + fy3*et
        dfz = fz1*zt + fz2*xi + fz3*et
 
-       call sgf_3d_w 
+       call sgf_3d_sw 
      +
      +  (Iopt_sgf
      +  ,y,z,x

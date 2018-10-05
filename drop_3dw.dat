@@ -10,8 +10,8 @@
 
 1.0       shear rate
 
-1.0 0      viscosity of ambient fluid
-0.5 1.00 0.2 1.0      viscosity of drop
+0.1 0      viscosity of ambient fluid
+1.0 1.00 0.2 1.0      viscosity of drop
 
 10.0 1.0   tinit:  initial surface tension
 
@@ -26,7 +26,7 @@
 0 1         Isym_xy
 
 2 1         Runge-Kutta: IRK
-0.001     Dt: time step
+0.0001     Dt: time step
 
 5        Nprint_xy
 5        Nprint_xyz

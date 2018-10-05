@@ -91,7 +91,7 @@ c simple shear flow: ux = k y
 c---------------------
 
        Do i=1,npts
-        uinf(i,1) = 0 ! shrt*p(i,2)
+        uinf(i,1) = 0.0d0 ! shrt*p(i,2)
         uinf(i,2) = 0.0D0
         uinf(i,3) = 0.0D0
 c       write (6,100) i,uinf(i,1),uinf(i,2),uinf(i,3)
